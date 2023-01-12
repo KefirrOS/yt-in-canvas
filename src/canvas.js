@@ -1,20 +1,27 @@
-const canvas = document.querySelector('canvas');
+let timerID;
 
-document.addEventListener('DOMContentLoaded', function() {
-    const video = document.getElementsByTagName('video')[0];
-    console.log('[Mariusz] video: ', video.childNodes);
+window.onload = function() {
+    canvas = document.getElementById('myCanvas');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-    video.addEventListener('loadedmetadata', function() {
-        canvas.width = this.videoWidth;
-        canvas.height = this.videoHeight;
+    ctx = canvas.getContext('2d');
+
+    const video = document.getElementById('video');
+
+    timerID = window.setInterval( function() {
+        ctx.drawImage(video, 5, 5, window.innerWidth, 270);
+    }, 30);
+
+    video.addEventListener('pause', function() {
+        stopTimer();
     });
 
-    function draw() {
-        canvas.getContext('2d').drawImage(video, 0, 0);
-    }
-
-    video.addEventListener('play', function() {
-        if (video.paused || video.ended) return;
-        draw();
+    video.addEventListener('ended', function() {
+        stopTimer();
     });
-})
+};
+
+function stopTimer() {
+    window.clearInterval(timerID);
+};

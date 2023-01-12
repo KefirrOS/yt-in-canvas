@@ -4,11 +4,18 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>YouTube in Canvas</title>
+        <title>Video with Canvas</title>
     </head>
     <body>
-        <video controls="controls" src="../assets/oldspice.mp4"></video>
-        <canvas></canvas>
+        Orginal Video:
+        <br />
+        <video id="video" controls="true" width="270" height="200" autoplay="false">
+            <source src="../assets/oldspice.mp4" type="video/mp4" />
+        </video>
+        <br />
+        Responsive Canvas:
+        <br />
+        <canvas id="myCanvas"></canvas>
         <script src="canvas.js"></script>
     </body>
 </html>
